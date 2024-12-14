@@ -112,7 +112,6 @@ int main() {
     Polynomial AP, BP;
     int exp;
     float coef;
-    char mod;
 
     // 輸入多項式1
     cout << "輸入多項式1（格式：係數 次方數，結束請輸入次方數為0）：" << endl;
@@ -134,16 +133,18 @@ int main() {
         if (coef != 0 && exp > 0) BP.NewTerm(coef, exp);
     }
     AP.print();
-
-    // 顯示運算模式並進行加法
-    cout << "選擇運算模式(+):";
-    cin >> mod;
+    BP.print();
 
     // 呼叫 Add 函數並接收回傳的多項式
-    if (mod == '+') {
-        cout << "加法結果是：";
-        AP.Add(BP);
-    }
+    cout << "加法結果是：";
+    AP.Add(BP);
+    
+    // 呼叫帶入運算(EVAL) 
+    float evalvalue = 0.0;
+    cout << "輸入X值:";
+    cin >> evalvalue;
+
+    cout << "X帶入兩多項式" << endl << AP.Eval(evalvalue) << endl << BP.Eval(evalvalue) << endl;
     return 0;
 }
 
