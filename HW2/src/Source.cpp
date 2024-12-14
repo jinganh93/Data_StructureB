@@ -25,7 +25,7 @@ public:
         termArray = new Term[capacity];
     }
     int getterms() const { return terms; }
-    Polynomial Add(const Polynomial& poly);      // 加法
+    void Add(const Polynomial& poly);      // 加法
     Polynomial Mult(const Polynomial poly);      // 乘法
     void NewTerm(const float coef, const int exp); // 新增項目
     void print() const;
@@ -35,7 +35,7 @@ public:
     }
 };
     
-Polynomial Polynomial::Add(const Polynomial& poly) {
+void Polynomial::Add(const Polynomial& poly) {
     Polynomial temp;
     int i = 0, j = 0;
 
@@ -65,8 +65,7 @@ Polynomial Polynomial::Add(const Polynomial& poly) {
         temp.NewTerm(poly.termArray[j].coef, poly.termArray[j].exp);
         j++;
     }
-
-    return temp;
+    temp.print();
 }
 
 void Polynomial::NewTerm(const float coef, const int exp) {
@@ -143,10 +142,8 @@ int main() {
     // 呼叫 Add 函數並接收回傳的多項式
     if (mod == '+') {
         cout << "加法結果是：";
+        AP.Add(BP);
     }
-
-    
-
     return 0;
 }
 
